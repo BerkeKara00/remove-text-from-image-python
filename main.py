@@ -10,6 +10,7 @@ def expand_polygon(polygon, scale=1.2):
     cy = np.mean(polygon[:, 1])
 
     new_polygon = np.array([[cx + scale * (x - cx), cy + scale * (y - cy)] for (x, y) in polygon])
+
     return new_polygon.astype(np.int32)
 
 
@@ -55,8 +56,8 @@ img_text_removed = indexleri_maskele('data/3.jpg', pipeline, word_indices=word_i
 img_text_removed_bgr = cv2.cvtColor(img_text_removed, cv2.COLOR_RGB2BGR)
 
 
-#Sonucu cikti klasörüne kaydediyoruz.
-cv2.imwrite('cikti/masked_image.jpg', img_text_removed_bgr)
+#Sonucu output klasörüne kaydediyoruz.
+cv2.imwrite('output/masked_image.jpg', img_text_removed_bgr)
 
 # Görselleştirme
 fig, axs = plt.subplots(1, 2, figsize=(10, 5))
